@@ -13,6 +13,12 @@ Go to [legend](#legend---types-of-changes) for further information about the typ
 |:---------------------|:---------------------------------------:|:------------------------------:|:--------------:|:---------------------------|
 |    **v0.0.1-alpha**  | [Change Log](#001-alpha---2024-07-29)   | [v0.0.1-alpha][v0.0.1-alpha]   | 2024-07-29     |                            |
 
+## [0.1.0] - 2026-??-??
+
+### Changed
+
+- Integrated Excel close on quit so normal _ExcelClose functionality will work.
+
 ## [0.0.1-alpha] - 2024-07-29
 
 ### Added

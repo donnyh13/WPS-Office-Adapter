@@ -4,11 +4,12 @@
 #include-once
 
 #include <AutoItConstants.au3>
+#include <Excel.au3>
 
 ; #INDEX# =======================================================================================================================
 ; Title .........: WPS Office Adapter
 ; AutoIt Version : v3.3.16.1
-; UDF Version    : 0.0.1-alpha
+; UDF Version    : 0.1.0
 ; Description ...: Provides functions for creating or connecting to a WPS application instance.
 ; Author(s) .....: donnyh13
 ; Dll ...........:
@@ -385,7 +386,7 @@ Func _WPS_Spreadsheets_Open($bVisible = True, $bDisplayAlerts = False, $bScreenU
 	#forceref $oError
 
 	Local $oKET
-	Local $bApplOpened = False
+	Local $bApplCloseOnQuit = False
 
 	If Not IsBool($bVisible) Then Return SetError($__WPS_RETURN_INPUT_ERROR, 1, 0)
 	If Not IsBool($bDisplayAlerts) Then Return SetError($__WPS_RETURN_INPUT_ERROR, 2, 0)
@@ -397,15 +398,15 @@ Func _WPS_Spreadsheets_Open($bVisible = True, $bDisplayAlerts = False, $bScreenU
 	If $bForceNew Or @error Then
 		$oKET = ObjCreate("KET.Application")
 		If @error Or Not IsObj($oKET) Then Return SetError($__WPS_RETURN_PROCESSING_ERROR, @error, 0)
-		$bApplOpened = True
+		$bApplCloseOnQuit = True
 	EndIf
-
+	__Excel_CloseOnQuit($oKET, $bApplCloseOnQuit)
 	$oKET.Visible = $bVisible
 	$oKET.DisplayAlerts = $bDisplayAlerts
 	$oKET.ScreenUpdating = $bScreenUpdating
 	$oKET.Interactive = $bInteractive
 
-	Return SetError($__WPS_RETURN_SUCCESS, $bApplOpened, $oKET)
+	Return SetError($__WPS_RETURN_SUCCESS, $bApplCloseOnQuit, $oKET)
 EndFunc   ;==>_WPS_Spreadsheets_Open
 
 ; #FUNCTION# ====================================================================================================================
@@ -435,7 +436,7 @@ EndFunc   ;==>_WPS_Spreadsheets_Open
 Func _WPS_Writer_Create($bVisible = True, $bForceNew = False)
 	Local $oCOM_ErrorHandler = ObjEvent("AutoIt.Error", __WPS_InternalComErrorHandler)
 	#forceref $oCOM_ErrorHandler
-_excel_close
+
 	Local $oKWPS
 	Local $bApplOpened = False
 
@@ -486,6 +487,7 @@ Func __WPS_InternalComErrorHandler(ByRef $oComError)
 		Switch $vUserFunction
 			Case ConsoleWrite
 				ConsoleWrite("!--COM Error-Begin--" & @CRLF & _
+						"> WPS Office Adapter" & @CRLF & _
 						"Number: 0x" & Hex($oComError.number, 8) & @CRLF & _
 						"WinDescription: " & $oComError.windescription & @CRLF & _
 						"Source: " & $oComError.source & @CRLF & _
@@ -496,7 +498,8 @@ Func __WPS_InternalComErrorHandler(ByRef $oComError)
 						"At line: " & $oComError.scriptline & @CRLF & _
 						"!--COM-Error-End--" & @CRLF)
 			Case MsgBox
-				MsgBox(0, "COM Error", "Number: 0x" & Hex($oComError.number, 8) & @CRLF & _
+				MsgBox(0, "COM Error", "> WPS Office Adapter" & @CRLF & _
+						"Number: 0x" & Hex($oComError.number, 8) & @CRLF & _
 						"WinDescription: " & $oComError.windescription & @CRLF & _
 						"Source: " & $oComError.source & @CRLF & _
 						"Error Description: " & $oComError.description & @CRLF & _
