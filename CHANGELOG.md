@@ -19,6 +19,10 @@ Go to [legend](#legend---types-of-changes) for further information about the typ
 
 - Integrated Excel close on quit so normal _ExcelClose functionality will work.
 
+### Fixed
+
+- Fixed missing return, always causing a new instance of WPS to be created.
+
 ## [0.0.1-alpha] - 2024-07-29
 
 ### Added
