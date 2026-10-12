@@ -560,7 +560,6 @@ Func __WPS_Obj_Get($iType)
 	Do
 		$oAppl = ObjGet("", $sType, $iCount)
 		$iError = @error
-		ConsoleWrite(ObjName($oAppl, $OBJ_FILE) & @CRLF)
 		If IsObj($oAppl) And StringInStr(ObjName($oAppl, $OBJ_FILE), "\Kingsoft\") Then Return SetError($__WPS_RETURN_SUCCESS, 1, $oAppl)
 		$iCount += 1
 	Until $iError
