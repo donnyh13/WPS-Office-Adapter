@@ -11,7 +11,19 @@ Go to [legend](#legend---types-of-changes) for further information about the typ
 
 |    Version           |    Changes                              |    Download                    |     Released   |    Compare on GitHub       |
 |:---------------------|:---------------------------------------:|:------------------------------:|:--------------:|:---------------------------|
+|    **v0.1.0**        | [Change Log](#010---2026-10-12)         | [v0.1.0][v0.1.0]               | 2026-10-12     | [Compare][v0.1.0-Compare] |
 |    **v0.0.1-alpha**  | [Change Log](#001-alpha---2024-07-29)   | [v0.0.1-alpha][v0.0.1-alpha]   | 2024-07-29     |                            |
+
+## [0.1.0] - 2026-10-12
+
+### Changed
+
+- Integrated Excel close on quit so normal _ExcelClose functionality will work.
+- Improved examples, and also updated for new behaviour.
+
+### Fixed
+
+- Fixed missing return, always causing a new instance of WPS to be created.
 
 ## [0.0.1-alpha] - 2024-07-29
 
@@ -37,4 +49,7 @@ Go to [legend](#legend---types-of-changes) for further information about the typ
 
 ---
 
+[v0.1.0]: https://github.com/donnyh13/WPS-Office-Adapter/releases/tag/0.1.0
 [v0.0.1-alpha]: https://github.com/donnyh13/WPS-Office-Adapter/releases/tag/0.0.1-alpha
+
+[v0.1.0-Compare]: https://github.com/donnyh13/WPS-Office-Adapter/compare/v0.0.1-alpha...v0.1.0

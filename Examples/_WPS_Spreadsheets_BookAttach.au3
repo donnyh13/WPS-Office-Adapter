@@ -26,6 +26,5 @@ Func _Example()
 	MsgBox($MB_OK, "", "Search by Title Successful, attached to Workbook. " & $oWorkbook.Application.Caption)
 
 	; Close the Spreadsheet Application.
-	_Excel_Close($oWPS_Spreadsheet, False, True)
-
+	_Excel_Close($oWPS_Spreadsheet, False)
 EndFunc
