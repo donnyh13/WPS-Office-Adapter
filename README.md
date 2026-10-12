@@ -21,7 +21,6 @@ Question or comments, or suggestions are welcome and appreciated. And also, if y
 - If anyone has a better method for connecting to and differentiating between an active instance of WPS, and an active instance of MS Office, I would appreciate any hints. The CLSID’s are identical, as well as the class name when it is running (Word.Application; Excel.Application; PowerPoint.Application)
 - So far I haven’t come up with a better name, so I have called it simply “WPS Office Adapter” because it allows you to use MS Office UDF functions for WPS. Any suggestions for a name will also be appreciated.
 - In order for the examples of WPS Presentation to work, you will need to modify the Include path to point to the PowerPoint UDF, or place a copy into the main WPS UDF folder.
-- For the `_Excel_Close` function, you will need to call ForceClose with True, or implement water’s internal `__Excel_CloseOnQuit` function as done in _Excel_Open, to allow the usual functionality of `_Excel_Close` to work.
 
 ## Equivalent functions
 

@@ -5,7 +5,7 @@
 _Example()
 
 Func _Example()
-	Local $oWPS_Spreadsheet
+	Local $oWPS_Spreadsheet, $oBook1, $oBook2
 	Local $avWorkbooks[0][3]
 
 	; Create a new WPS Spreadsheets Application.
@@ -13,18 +13,18 @@ Func _Example()
 	If @error <> 0 Then Exit MsgBox($MB_OK, "", "Error creating the WPS Spreadsheets application object." & @CRLF & "Error:" & @error & ", Extended:" & @extended)
 
 	; Create a new Workbook
-	_Excel_BookNew($oWPS_Spreadsheet)
+	$oBook1 = _Excel_BookNew($oWPS_Spreadsheet)
 	If @error Then
 		MsgBox($MB_OK, "", "Error creating new workbook." & @CRLF & "Error:" & @error & ", Extended:" & @extended)
-		_Excel_Close($oWPS_Spreadsheet, False, True)
+		_Excel_Close($oWPS_Spreadsheet, False)
 		Exit
 	EndIf
 
 	; Create another new Workbook
-	_Excel_BookNew($oWPS_Spreadsheet)
+	$oBook2 = _Excel_BookNew($oWPS_Spreadsheet)
 	If @error Then
 		MsgBox($MB_OK, "", "Error creating new workbook." & @CRLF & "Error:" & @error & ", Extended:" & @extended)
-		_Excel_Close($oWPS_Spreadsheet, False, True)
+		_Excel_Close($oWPS_Spreadsheet, False)
 		Exit
 	EndIf
 
@@ -34,6 +34,7 @@ Func _Example()
 
 	_ArrayDisplay($avWorkbooks)
 
-	_Excel_Close($oWPS_Spreadsheet, False, True)
-
+	_Excel_BookClose($oBook1, False)
+	_Excel_BookClose($oBook2, False)
+	_Excel_Close($oWPS_Spreadsheet, False)
 EndFunc

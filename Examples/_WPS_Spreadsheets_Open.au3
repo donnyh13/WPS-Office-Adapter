@@ -21,6 +21,6 @@ Func _Example()
 	MsgBox($MB_OK, "", "I successfully created a new WPS Spreadsheets Application instance.")
 
 	; Close the Spreadsheets Application.
-	_Excel_Close($oWPS_Spreadsheet, False, True)
+	_Excel_Close($oWPS_Spreadsheet, False)
 
 EndFunc
